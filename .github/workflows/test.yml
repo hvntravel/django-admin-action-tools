@@ -77,12 +77,15 @@ jobs:
       run: poetry run python tests/manage.py collectstatic --no-input
 
     - name: Run tests with coverage
-      run: |
-        poetry run coverage run -m pytest
-        poetry run coverage xml
+      run: poetry run coverage run -m pytest
+
+    - name: Export result
+      if: always()
+      run: poetry run coverage xml
 
     - name: Upload Coverage to Codecov
       uses: codecov/codecov-action@v3
+      if: always()
       with:
         verbose: true
         files: coverage.xml
