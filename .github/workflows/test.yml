@@ -38,8 +38,8 @@ jobs:
         options: --health-cmd="curl http://localhost:4566/health?reload" --health-interval=10s --health-timeout=5s --health-retries=3
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10"]
-        django-version: ["3.2.16", "4.1.2"]
+        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        django-version: ["3.2.16", "4.1.2", "4.2.2"]
         poetry-version: ["1.2"]
     env:
       DJANGO_VERSION: ${{ matrix.django-version }}
